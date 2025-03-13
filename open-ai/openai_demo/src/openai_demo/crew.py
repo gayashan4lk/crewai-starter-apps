@@ -12,25 +12,26 @@ class OpenaiDemo():
 	agents_config = 'config/agents.yaml'
 	tasks_config = 'config/tasks.yaml'
 
-	anthropic_model_haiku = f"anthropic/{os.getenv('ANTHROPIC_MODEL_HAIKU', 'claude-3-5-haiku-latest')}"
-	anthropic_model_sonnet = f"anthropic/{os.getenv('ANTHROPIC_MODEL_SONNET', 'claude-3-7-sonnet-latest')}"
+	anthropic_model_haiku = LLM(
+		model=f"anthropic/{os.getenv('ANTHROPIC_MODEL_HAIKU', 'claude-3-5-haiku-latest')}", temperature=0.5)
+	
+	anthropic_model_sonnet = LLM(
+		model=f"anthropic/{os.getenv('ANTHROPIC_MODEL_SONNET', 'claude-3-7-sonnet-latest')}", temperature=0.5)
 
 	@agent
 	def researcher(self) -> Agent:
-		researcher_llm = LLM(model=self.anthropic_model_haiku, temperature=0.5)
 		return Agent(
 			config=self.agents_config['researcher'],
 			verbose=True,
-			# llm=researcher_llm
+			llm=self.anthropic_model_haiku
 		)
 
 	@agent
 	def reporting_analyst(self) -> Agent:
-		reporting_analyst_llm = LLM(model=self.anthropic_model_haiku, temperature=0.5)
 		return Agent(
 			config=self.agents_config['reporting_analyst'],
 			verbose=True,
-			# llm=reporting_analyst_llm
+			llm=self.anthropic_model_haiku
 		)
 
 	@task
