@@ -1,54 +1,54 @@
-# OpenaiDemo Crew
+# Setup `crewAI` with `pip`
 
-Welcome to the OpenaiDemo Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+Welcome to the OpenaiDemo Crew project, powered by [crewAI](https://crewai.com).
+This project is setup using `pip` instead of `uv` which is recommened in the [official crewAI documentation](https://docs.crewai.com/installation).
 
-## Installation
+visit [pip page for crewAI package](https://pypi.org/project/crewai/) for more info.
 
-Ensure you have Python >=3.10 <3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+> **Important Notice:** Before beginning, ensure you have Python >=3.10 <3.13 installed on your system. (I used Python 3.12.9)
 
-First, if you haven't already, install uv:
+## Create a virtual environment
 
+Create a python virtual environment at the root directory of the project:
+
+your current dir: crewai-starter-apps/openai
 ```bash
-pip install uv
+python -m venv .venv
 ```
 
-Next, navigate to your project directory and install the dependencies:
+## Install dependencies
 
-(Optional) Lock the dependencies and install them by using the CLI command:
+Install the dependencies:
+
+your current dir: crewai-starter-apps/openai
 ```bash
-crewai install
+pip install -r requirements.txt
 ```
-### Customizing
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+### Create .env file.
 
-- Modify `src/openai_demo/config/agents.yaml` to define your agents
-- Modify `src/openai_demo/config/tasks.yaml` to define your tasks
-- Modify `src/openai_demo/crew.py` to add your own logic, tools and specific args
-- Modify `src/openai_demo/main.py` to add custom inputs for your agents and tasks
+copy `.env-example` file and rename to `.env`
+add your api keys.
 
 ## Running the Project
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+To run your crew, you need to go into the `openai_demo` directory, which include the crewAI files:
 
+your current dir: crewai-starter-apps/openai
 ```bash
-$ crewai run
+$ cd openai_demo
+```
+
+Execute `main.py` file.
+your current dir: crewai-starter-apps/openai/openai_demo
+```bash
+$ python src/openai_demo/main.py
 ```
 
 This command initializes the openai-demo Crew, assembling the agents and assigning them tasks as defined in your configuration.
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+After a successfull run a `report.md` file with the output of a research on LLMs will be created in the project folder `crewai-starter-apps/openai/openai_demo/report.md`.
 
 ## Understanding Your Crew
 
 The openai-demo Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
-
-## Support
-
-For support, questions, or feedback regarding the OpenaiDemo Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
