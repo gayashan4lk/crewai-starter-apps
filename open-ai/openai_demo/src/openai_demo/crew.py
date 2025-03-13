@@ -21,7 +21,7 @@ class OpenaiDemo():
 		return Agent(
 			config=self.agents_config['researcher'],
 			verbose=True,
-			llm=researcher_llm
+			# llm=researcher_llm
 		)
 
 	@agent
@@ -30,7 +30,7 @@ class OpenaiDemo():
 		return Agent(
 			config=self.agents_config['reporting_analyst'],
 			verbose=True,
-			llm=reporting_analyst_llm
+			# llm=reporting_analyst_llm
 		)
 
 	@task
